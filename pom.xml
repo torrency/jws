@@ -5,11 +5,11 @@
   <parent>
     <groupId>ga.rugal</groupId>
     <artifactId>parent</artifactId>
-    <version>1.14.0</version>
+    <version>1.14.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>jws</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
 
   <name>Json Web Signature</name>
   <description>Json Web Signature library for project Torrency</description>
@@ -48,17 +48,16 @@
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-annotations</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.google.dagger</groupId>
+      <artifactId>dagger</artifactId>
+    </dependency>
     <!--
-        hibernate
+        JEP
     -->
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-    </dependency>
-    <!-- Auto Append -->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
     </dependency>
     <!-- jjwt -->
     <dependency>
@@ -73,6 +72,7 @@
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt-jackson</artifactId>
     </dependency>
+    <!-- Auto Append -->
   </dependencies>
 
   <build>
@@ -127,6 +127,11 @@
               <groupId>org.projectlombok</groupId>
               <artifactId>lombok</artifactId>
               <version>${lombok.version}</version>
+            </path>
+            <path>
+              <groupId>com.google.dagger</groupId>
+              <artifactId>dagger-compiler</artifactId>
+              <version>${dagger.version}</version>
             </path>
           </annotationProcessorPaths>
         </configuration>
