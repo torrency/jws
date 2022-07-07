@@ -1,7 +1,7 @@
 package ga.rugal.jws.core.service;
 
 import config.Constant;
-import config.DaggerJwsApplication;
+import config.DaggerJwsLibrary;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,7 @@ public class JwsServiceTest {
 
   @BeforeEach
   public void setup() {
-    final var build = DaggerJwsApplication.builder().build();
+    final var build = DaggerJwsLibrary.builder().build();
     this.service = build.jwsService();
   }
 

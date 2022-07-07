@@ -14,10 +14,10 @@ import dagger.Component;
 @Singleton
 @Component(
   modules = {
-    ApplicationModule.class
+    AssembleModule.class
   }
 )
-public interface JwsApplication {
+public interface JwsLibrary {
 
   JwsService jwsService();
 }

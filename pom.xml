@@ -5,7 +5,7 @@
   <parent>
     <groupId>ga.rugal</groupId>
     <artifactId>parent</artifactId>
-    <version>1.14.1-SNAPSHOT</version>
+    <version>1.15.0</version>
   </parent>
 
   <artifactId>jws</artifactId>
@@ -51,13 +51,6 @@
     <dependency>
       <groupId>com.google.dagger</groupId>
       <artifactId>dagger</artifactId>
-    </dependency>
-    <!--
-        JEP
-    -->
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
     </dependency>
     <!-- jjwt -->
     <dependency>

@@ -8,6 +8,4 @@ package config;
 public interface SystemDefaultProperty {
 
   String ENCODING = "UTF-8";
-
-  String SCHEMA = "raizekusu";
 }

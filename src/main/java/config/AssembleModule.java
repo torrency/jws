@@ -12,7 +12,7 @@ import dagger.Module;
  * @author Rugal Bernstein
  */
 @Module
-public interface ApplicationModule {
+public interface AssembleModule {
 
   @Binds
   JwsService bindJwsService(JwsServiceImpl impl);

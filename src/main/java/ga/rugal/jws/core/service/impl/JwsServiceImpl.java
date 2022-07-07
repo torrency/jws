@@ -1,6 +1,7 @@
 package ga.rugal.jws.core.service.impl;
 
 import java.util.Optional;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 
@@ -31,7 +32,7 @@ public class JwsServiceImpl implements JwsService {
    * {@inheritDoc}
    */
   @Override
-  public Jwt<Header, Claims> decode(final String jws) {
+  public Jwt<Header, Claims> decode(final @Nonnull String jws) {
     if (LOG.isTraceEnabled()) {
       LOG.trace("Cut the signature part from JWS");
     }

@@ -1,6 +1,7 @@
 package ga.rugal.jws.core.service;
 
 import java.util.Optional;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import io.jsonwebtoken.Claims;
@@ -26,7 +27,7 @@ public interface JwsService {
    * @param jws the JWS from header after the Bearer keyword
    * @return valid JWT object
    */
-  Jwt<Header, Claims> decode(String jws);
+  Jwt<Header, Claims> decode(@Nonnull String jws);
 
   /**
    * An utility method to help get the JWT from HTTP request Authorization header, so you do not
@@ -34,7 +35,7 @@ public interface JwsService {
    *
    * @param header just toss the entire Authorization header into it
    * @return empty of unable to find legit token out of Authorization header, otherwise would decode
-   *         JWS and get the JWT object out of it
+   *     JWS and get the JWT object out of it
    */
   Optional<Jwt<Header, Claims>> getFromHeader(@Nullable String header);
 

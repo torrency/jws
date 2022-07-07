@@ -13,7 +13,7 @@ public interface Constant {
 
   String SUBJECT = "authentication";
 
-  String ISSUER = SystemDefaultProperty.SCHEMA;
+  String ISSUER = "raizekusu";
 
   String ID = "id";
 
