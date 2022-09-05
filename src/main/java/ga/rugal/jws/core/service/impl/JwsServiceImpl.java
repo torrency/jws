@@ -55,7 +55,7 @@ public class JwsServiceImpl implements JwsService {
    */
   @Override
   public Optional<Jwt<Header, Claims>> getFromHeader(final @Nullable String header) {
-    if (StringUtils.hasLength(header) || !header.startsWith(Constant.BEARER)) {
+    if (!StringUtils.hasLength(header) || !header.startsWith(Constant.BEARER)) {
       if (LOG.isTraceEnabled()) {
         LOG.trace("Header not found or has no Bearer keyword");
       }

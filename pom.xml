@@ -15,6 +15,12 @@
   <description>Json Web Signature library for project Torrency</description>
   <url>https://github.com/torrency/jws</url>
 
+  <scm>
+    <connection>scm:git:ssh://git@github.com/torrency/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/torrency/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/torrency/jws</url>
+  </scm>
+
   <properties>
     <!-- test switch -->
     <skip.surefire.tests>true</skip.surefire.tests>
