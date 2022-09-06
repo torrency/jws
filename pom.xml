@@ -29,6 +29,8 @@
     <!--
       dependency
     -->
+    <jose4j.version>0.8.0</jose4j.version>
+    <bouncycastle.version>1.71.1</bouncycastle.version>
     <!--
       plugin
     -->
@@ -38,6 +40,10 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
     </dependency>
     <!-- junit 5 -->
     <dependency>
@@ -58,18 +64,16 @@
       <groupId>com.google.dagger</groupId>
       <artifactId>dagger</artifactId>
     </dependency>
-    <!-- jjwt -->
+    <!-- jwt -->
     <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-api</artifactId>
+      <groupId>org.bitbucket.b_c</groupId>
+      <artifactId>jose4j</artifactId>
+      <version>${jose4j.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-impl</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-jackson</artifactId>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcmail-jdk18on</artifactId>
+      <version>${bouncycastle.version}</version>
     </dependency>
     <!-- Auto Append -->
   </dependencies>

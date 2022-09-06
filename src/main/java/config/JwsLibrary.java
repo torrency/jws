@@ -2,7 +2,7 @@ package config;
 
 import javax.inject.Singleton;
 
-import ga.rugal.jws.core.service.JwsService;
+import ga.rugal.jws.core.service.JwsDecodeService;
 
 import dagger.Component;
 
@@ -19,5 +19,5 @@ import dagger.Component;
 )
 public interface JwsLibrary {
 
-  JwsService jwsService();
+  JwsDecodeService jwsDecodeService();
 }

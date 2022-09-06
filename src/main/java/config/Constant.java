@@ -18,4 +18,6 @@ public interface Constant {
   String ID = "id";
 
   String AUDIENCE = "user";
+
+  String JWKS_URL = "http://localhost:8080/jwks.json";
 }
