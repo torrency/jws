@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>jws</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <name>Json Web Signature</name>
   <description>Json Web Signature library for project Torrency</description>
@@ -19,6 +19,7 @@
     <connection>scm:git:ssh://git@github.com/torrency/${project.artifactId}.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/torrency/${project.artifactId}.git</developerConnection>
     <url>https://github.com/torrency/jws</url>
+    <tag>v1.0.0</tag>
   </scm>
 
   <properties>
