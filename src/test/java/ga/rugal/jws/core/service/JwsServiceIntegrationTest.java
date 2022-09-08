@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 @Disabled
-public class JwsServiceTest {
+public class JwsServiceIntegrationTest {
 
   private JwsDecodeService service;
 
@@ -32,6 +32,6 @@ public class JwsServiceTest {
   public void getUserId() {
     var claim = this.service.getUserId(JWS, false);
     Assertions.assertTrue(claim.isPresent());
-    Assertions.assertEquals(1, claim.get());
+    Assertions.assertEquals(1, (int) claim.get());
   }
 }
