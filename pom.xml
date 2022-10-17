@@ -4,8 +4,8 @@
 
   <parent>
     <groupId>ga.rugal</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.15.0</version>
+    <artifactId>torrency-parent</artifactId>
+    <version>1.0.0</version>
   </parent>
 
   <artifactId>jws</artifactId>
@@ -30,8 +30,6 @@
     <!--
       dependency
     -->
-    <jose4j.version>0.8.0</jose4j.version>
-    <bouncycastle.version>1.71.1</bouncycastle.version>
     <!--
       plugin
     -->
@@ -46,21 +44,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-tomcat</artifactId>
     </dependency>
-    <!-- junit 5 -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
     <!-- codegen -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.github.spotbugs</groupId>
-      <artifactId>spotbugs-annotations</artifactId>
-    </dependency>
     <dependency>
       <groupId>com.google.dagger</groupId>
       <artifactId>dagger</artifactId>
@@ -69,12 +53,10 @@
     <dependency>
       <groupId>org.bitbucket.b_c</groupId>
       <artifactId>jose4j</artifactId>
-      <version>${jose4j.version}</version>
     </dependency>
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcmail-jdk18on</artifactId>
-      <version>${bouncycastle.version}</version>
     </dependency>
     <!-- Auto Append -->
   </dependencies>
@@ -85,11 +67,6 @@
       <plugin>
         <groupId>pl.project13.maven</groupId>
         <artifactId>git-commit-id-plugin</artifactId>
-        <configuration>
-          <gitDescribe>
-            <always>true</always>
-          </gitDescribe>
-        </configuration>
       </plugin>
       <!-- checkstyle -->
       <plugin>
