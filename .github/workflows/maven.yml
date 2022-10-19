@@ -14,24 +14,26 @@ jobs:
   # CI
   integration:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2.1.0
+      - name: clone parent repository
+        uses: actions/checkout@v3
+        with:
+          repository: torrency/torrency
+          token: ${{ secrets.CLONE_TOKEN }}
+          submodules: true
 
       - name: Setup Java JDK
-        uses: actions/setup-java@v1.4.3
+        uses: actions/setup-java@v3.6.0
         with:
           java-version: 11
+          distribution: zulu
 
       - name: Restore Build Cache
-        uses: actions/cache@v1.1.2
+        uses: actions/cache@v3
         with:
+          key: v1-jws-${{ hashFiles('jws/pom.xml') }}
           path: ~/.m2/repository
-          key: v1-jws-${{ hashFiles('pom.xml') }}
 
       - name: Full Test With Maven
-        run: mvn --no-transfer-progress clean -Dskip.surefire.tests=false -D=skip.failsafe.tests=false verify
-
-      - name: Create JAR package
-        run: mvn --no-transfer-progress clean package
+        run: mvn --no-transfer-progress clean -Dskip.surefire.tests=false -D=skip.failsafe.tests=false package
+        working-directory: jws
