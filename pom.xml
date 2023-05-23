@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>ga.rugal</groupId>
-    <artifactId>torrency-parent</artifactId>
+    <groupId>ga.rugal.torrency</groupId>
+    <artifactId>parent</artifactId>
     <version>1.0.0</version>
   </parent>
 
@@ -59,6 +59,10 @@
       <artifactId>bcmail-jdk18on</artifactId>
     </dependency>
     <!-- Auto Append -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -121,7 +125,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>${source.plugin.version}</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -135,7 +138,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>${source.plugin.version}</version>
         <executions>
           <execution>
             <id>default-jar</id>
@@ -152,7 +154,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${source.plugin.version}</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
