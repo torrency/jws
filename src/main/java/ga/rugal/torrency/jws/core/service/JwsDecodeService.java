@@ -1,4 +1,4 @@
-package ga.rugal.jws.core.service;
+package ga.rugal.torrency.jws.core.service;
 
 import java.util.Optional;
 import javax.annotation.Nonnull;

@@ -2,7 +2,7 @@ package config;
 
 import javax.inject.Singleton;
 
-import ga.rugal.jws.core.service.JwsDecodeService;
+import ga.rugal.torrency.jws.core.service.JwsDecodeService;
 
 import dagger.Component;
 
