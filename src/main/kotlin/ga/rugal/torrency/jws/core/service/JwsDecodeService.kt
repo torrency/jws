@@ -1,9 +1,9 @@
 package ga.rugal.torrency.jws.core.service
 
 import java.util.Optional
-import javax.servlet.http.HttpServletRequest
 import config.Constant
 import io.github.oshai.kotlinlogging.KotlinLogging
+import jakarta.servlet.http.HttpServletRequest
 import org.jose4j.jwa.AlgorithmConstraints
 import org.jose4j.jwk.HttpsJwks
 import org.jose4j.jws.AlgorithmIdentifiers
