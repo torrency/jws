@@ -24,29 +24,32 @@
   </scm>
 
   <properties>
-
-    <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     <!-- test switch -->
     <skip.surefire.tests>true</skip.surefire.tests>
     <skip.failsafe.tests>true</skip.failsafe.tests>
     <!--
       dependency
     -->
-    <kotlin.version>1.9.0</kotlin.version>
     <!--
       plugin
     -->
-    <detekt.plugin.version>1.23.1</detekt.plugin.version>
-    <dokka.plugin.version>1.8.20</dokka.plugin.version>
   </properties>
 
   <dependencies>
-    <!-- kotlin -->
+    <!--
+      kotlin
+    -->
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib</artifactId>
-      <version>${kotlin.version}</version>
     </dependency>
+    <dependency>
+      <groupId>io.github.oshai</groupId>
+      <artifactId>kotlin-logging-jvm</artifactId>
+    </dependency>
+    <!--
+      spring
+    -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
@@ -54,6 +57,11 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-tomcat</artifactId>
+    </dependency>
+    <!-- servlet -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
     </dependency>
     <!-- jwt -->
     <dependency>
@@ -65,15 +73,6 @@
       <artifactId>bcmail-jdk18on</artifactId>
     </dependency>
     <!-- Auto Append -->
-    <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.github.oshai</groupId>
-      <artifactId>kotlin-logging-jvm</artifactId>
-      <version>5.1.0</version>
-    </dependency>
   </dependencies>
 
   <build>
@@ -81,41 +80,18 @@
     <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 
     <plugins>
+      <!--
+          validate
+      -->
+      <!-- lint -->
       <plugin>
-        <!--
-            validate
-        -->
-        <!-- lint -->
         <groupId>com.github.ozsie</groupId>
         <artifactId>detekt-maven-plugin</artifactId>
-        <version>${detekt.plugin.version}</version>
-        <configuration>
-          <autoCorrect>true</autoCorrect>
-          <failBuildOnMaxIssuesReached>false</failBuildOnMaxIssuesReached>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <!-- compile -->
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
-        <version>${kotlin.version}</version>
-        <executions>
-          <execution>
-            <id>compile</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <!-- Unit Test -->
       <plugin>
@@ -129,20 +105,11 @@
       </plugin>
       <!--
         site
-    -->
+      -->
       <!-- documentation -->
       <plugin>
         <groupId>org.jetbrains.dokka</groupId>
         <artifactId>dokka-maven-plugin</artifactId>
-        <version>${dokka.plugin.version}</version>
-        <executions>
-          <execution>
-            <phase>pre-site</phase>
-            <goals>
-              <goal>dokka</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
