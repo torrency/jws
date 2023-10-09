@@ -8,7 +8,6 @@ import org.jose4j.jwa.AlgorithmConstraints
 import org.jose4j.jwk.HttpsJwks
 import org.jose4j.jws.AlgorithmIdentifiers
 import org.jose4j.jwt.JwtClaims
-import org.jose4j.jwt.MalformedClaimException
 import org.jose4j.jwt.consumer.InvalidJwtException
 import org.jose4j.jwt.consumer.JwtConsumer
 import org.jose4j.jwt.consumer.JwtConsumerBuilder
@@ -77,14 +76,13 @@ object JwsDecodeService {
    * @throws InvalidJwtException JWT in valid or not found
    */
   @Throws(InvalidJwtException::class)
-  fun decode(input: String?, isHeader: Boolean): JwtClaims = try {
+  fun decode(input: String?, isHeader: Boolean): JwtClaims = runCatching {
     //  Validate the JWT and process it to the Claims
     LOG.trace { "Try to decode JWS" }
     jwtConsumer.processToClaims(if (isHeader) getTokenFromHeader(input) else input)
-  } catch (e: InvalidJwtException) {
-    LOG.error { "Invalid JWT [${e.message}]" }
-    throw e
-  }
+  }.onFailure {
+    LOG.error { "Invalid JWT [${it.message}]" }
+  }.getOrThrow()
 
   /**
    * Parse JWS to get the body part.
@@ -106,12 +104,10 @@ object JwsDecodeService {
    * @param isHeader indicating the first parameter is token or header
    * @return true iff token exists and valid
    */
-  fun isValid(input: String?, isHeader: Boolean): Boolean = try {
+  fun isValid(input: String?, isHeader: Boolean): Boolean = runCatching {
     this.decode(input, isHeader)
     true
-  } catch (e: InvalidJwtException) {
-    false
-  }
+  }.getOrElse { false }
 
   /**
    * Validate input JWT or header.
@@ -132,13 +128,10 @@ object JwsDecodeService {
    * @param isHeader indicating the first parameter is token or header
    * @return true iff token exists and valid
    */
-  fun getUserId(input: String?, isHeader: Boolean): Optional<Int> = try {
+  fun getUserId(input: String?, isHeader: Boolean): Optional<Int> = runCatching {
     Optional.of(this.decode(input, isHeader).getClaimValue(Constant.ID, Long::class.java).toInt())
-  } catch (ex: InvalidJwtException) {
-    LOG.error(ex) { "Unable to get user id" }
-    Optional.empty()
-  } catch (ex: MalformedClaimException) {
-    LOG.error(ex) { "Unable to get user id" }
+  }.getOrElse {
+    LOG.error(it) { "Unable to get user id" }
     Optional.empty()
   }
 
