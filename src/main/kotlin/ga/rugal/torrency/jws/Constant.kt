@@ -1,4 +1,4 @@
-package config
+package ga.rugal.torrency.jws
 
 object Constant {
   const val BEARER = "Bearer"

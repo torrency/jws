@@ -1,6 +1,6 @@
 package ga.rugal.torrency.jws.core.service
 
-import config.Constant
+import ga.rugal.torrency.jws.Constant
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -20,7 +20,7 @@ class JwsServiceIntegrationTest {
   @Test
   fun userId() {
     val claim = JwsDecodeService.getUserId(JWS, false)
-    Assertions.assertTrue(claim.isPresent)
-    Assertions.assertEquals(1, claim.get())
+    Assertions.assertNotNull(claim)
+    Assertions.assertEquals(1, claim)
   }
 }

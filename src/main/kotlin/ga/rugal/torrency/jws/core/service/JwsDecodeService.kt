@@ -1,9 +1,8 @@
 package ga.rugal.torrency.jws.core.service
 
-import java.util.Optional
-import config.Constant
-import io.github.oshai.kotlinlogging.KotlinLogging
 import jakarta.servlet.http.HttpServletRequest
+import ga.rugal.torrency.jws.Constant
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jose4j.jwa.AlgorithmConstraints
 import org.jose4j.jwk.HttpsJwks
 import org.jose4j.jws.AlgorithmIdentifiers
@@ -128,11 +127,11 @@ object JwsDecodeService {
    * @param isHeader indicating the first parameter is token or header
    * @return true iff token exists and valid
    */
-  fun getUserId(input: String?, isHeader: Boolean): Optional<Int> = runCatching {
-    Optional.of(this.decode(input, isHeader).getClaimValue(Constant.ID, Long::class.java).toInt())
+  fun getUserId(input: String?, isHeader: Boolean): Int? = runCatching {
+    this.decode(input, isHeader).getClaimValue(Constant.ID, Long::class.java).toInt()
   }.getOrElse {
     LOG.error(it) { "Unable to get user id" }
-    Optional.empty()
+    null
   }
 
   /**
@@ -142,7 +141,7 @@ object JwsDecodeService {
    * @param request HTTP request that might contain Authorization header
    * @return true iff token exists and valid
    */
-  fun getUserId(request: HttpServletRequest): Optional<Int> =
+  fun getUserId(request: HttpServletRequest): Int? =
     this.getUserId(request.getHeader(Constant.AUTHORIZATION), true)
   //</editor-fold>
 }
