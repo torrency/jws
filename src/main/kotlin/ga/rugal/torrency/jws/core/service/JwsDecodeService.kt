@@ -1,6 +1,5 @@
 package ga.rugal.torrency.jws.core.service
 
-import jakarta.servlet.http.HttpServletRequest
 import ga.rugal.torrency.jws.Constant
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jose4j.jwa.AlgorithmConstraints
@@ -11,6 +10,8 @@ import org.jose4j.jwt.consumer.InvalidJwtException
 import org.jose4j.jwt.consumer.JwtConsumer
 import org.jose4j.jwt.consumer.JwtConsumerBuilder
 import org.jose4j.keys.resolvers.HttpsJwksVerificationKeyResolver
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpRequest
 
 /**
  * Service for decoding JWS.
@@ -91,8 +92,7 @@ object JwsDecodeService {
    * @throws InvalidJwtException JWT in valid or not found
    */
   @Throws(InvalidJwtException::class)
-  fun decode(request: HttpServletRequest): JwtClaims =
-    this.decode(request.getHeader(Constant.AUTHORIZATION), true)
+  fun decode(request: HttpRequest): JwtClaims = this.decode(request.headers[HttpHeaders.AUTHORIZATION]?.get(0), true)
   //</editor-fold>
 
   //<editor-fold defaultstate="collapsed" desc="Validation">
@@ -114,8 +114,7 @@ object JwsDecodeService {
    * @param request HTTP request that might contain Authorization header
    * @return true iff token exists and valid
    */
-  fun isValid(request: HttpServletRequest): Boolean =
-    this.isValid(request.getHeader(Constant.AUTHORIZATION), true)
+  fun isValid(request: HttpRequest): Boolean = this.isValid(request.headers[HttpHeaders.AUTHORIZATION]?.get(0), true)
   //</editor-fold>
 
   //<editor-fold defaultstate="collapsed" desc="Get User ID">
@@ -141,7 +140,6 @@ object JwsDecodeService {
    * @param request HTTP request that might contain Authorization header
    * @return true iff token exists and valid
    */
-  fun getUserId(request: HttpServletRequest): Int? =
-    this.getUserId(request.getHeader(Constant.AUTHORIZATION), true)
+  fun getUserId(request: HttpRequest): Int? = this.getUserId(request.headers[HttpHeaders.AUTHORIZATION]?.get(0), true)
   //</editor-fold>
 }
